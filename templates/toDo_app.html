@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>To Do List</h1>
+      </div>
+      <div  class="container">
+        <form class="" action="/addTodo/" method="post">
+          {% csrf_token %}
+          <input type="text" name="text" value="Task to do"/>
+          <input class="btn btn-outline-success btn-sm" type="submit" name="" value="ADD"/>
+
+        </form>
+
+      </div>
+      <br>
+
+      <div class="container">
+        <ul>
+          {% for item in listItem %}
+            <li>{{ item.text }}
+              <form style="display: inline;" class="" action="/deleteTodo/{{item.id}}/" method="post">
+                {% csrf_token %}
+                <input class="btn btn-outline-dark btn-sm" type="submit" name="" value="Delete">
+              </form></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="container">
+        <form action="/deleteAll/" method="post">
+          {% csrf_token %}
+          <input class="btn btn-outline-danger btn-lg" type="submit" name="" value="Delete All">
+        </form>
+
+      </div>
+
+    </div>
+  </body>
+</html>
