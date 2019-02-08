@@ -1,0 +1,47 @@
+{% extends "pastebin_app/base.html" %}
+
+{% block body_block %}
+<div class="container">
+  <h1> Patebin Assesment Project</h1>
+  <form id="searchform" action="{% url 'pastebin_app:search' %}" method="get" accept-charset="utf-8">
+
+      <label for="searchbox">Search by name of the post: </label><br>
+      <div class="row">
+        <div class="col">
+          <input class="form-control" id="searchbox" name="q" type="text" placeholder="Search">
+        </div>
+        <div class="col">
+          <input class="btn btn-primary" type="submit" value="Search"/>
+
+        </div>
+
+      </div>
+
+
+    </form><br>
+    <h2>Create your post</h2><br>
+    <div class="container-fluid">
+      <form class="" method="post">
+
+        <div class="form-group">
+          {% csrf_token %}
+          {{form.as_p}}
+          <input class="btn btn-primary" type="submit" name="" value="PASTE">
+
+
+       </div>
+       </form>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

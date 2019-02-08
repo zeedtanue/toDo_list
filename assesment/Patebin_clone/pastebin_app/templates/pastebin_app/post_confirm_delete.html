@@ -1,0 +1,12 @@
+{% extends "pastebin_app/base.html" %}
+
+{% block body_block %}
+<h1>Delete {{post.name}}?</h1>
+
+<form class=""  method="post">
+  {% csrf_token %}
+  <input class="btn btn-danger" type="submit" name="" value="Delete">
+  <a class="btn btn-primary" href="{% url 'pastebin_app:detail' pk=post.pk %}" role="button">Cancel</a>
+
+</form>
+{% endblock %}

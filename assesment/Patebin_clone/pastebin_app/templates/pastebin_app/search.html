@@ -1,0 +1,20 @@
+{% extends "pastebin_app/base.html" %}
+
+{% block body_block %}
+<div class="container">
+
+
+  {% if results %}
+    <ul>
+      {% for result in results %}
+        <li> <a href="{{result.get_absolute_url}}"><p>{{result.slug}} </p></a></li>
+        <p>Name: {{result.name}}</p>
+        <p>Content: {{result.content}}</p>
+      {% endfor %}
+
+    </ul>
+  {% else %}
+    <p>No matched results.</p>
+  {% endif %}
+</div>
+{% endblock %}
